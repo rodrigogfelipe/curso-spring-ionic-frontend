@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, MenuController } from 'ionic-angular';
+import { CredenciaisDTO } from '../../models/credencias.dto';
 
 @IonicPage() 
 @Component({
@@ -7,6 +8,12 @@ import { NavController, IonicPage, MenuController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  
+  /*Declarando a Classe CredenciaisDTO com os atributos vazios */ 
+  creds : CredenciaisDTO = {
+    email: "",
+    senha: ""
+}
 
   constructor(public navCtrl: NavController, public menu: MenuController) {
 
@@ -21,6 +28,7 @@ export class HomePage {
 }
   /*Declarando metado login para acessar a pagina CategoriasPages*/ 
   login() {
+    console.log(this.creds);
     this.navCtrl.setRoot('CategoriasPage');
   }
 
