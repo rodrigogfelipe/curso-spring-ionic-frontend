@@ -1,0 +1,21 @@
+<ion-content padding>
+  <h3>Sistema de pedidos</h3>
+  <!--Declarando o caminho img src para o carregamento da imagem -->
+  <img src="assets/imgs/telainicial.png" alt="logo">
+
+  <!--Criando a pagina de campos de preechimentos EMAIL E SENHA-->
+  <form>
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label stacked>Senha</ion-label>
+          <ion-input type="password"></ion-input>
+        <!--ion-button block(click)="login() tem a função de chamar o metado login() ao click do botão-->
+      </ion-item>
+          <button ion-button block (click)="login()">Entrar</button>
+      </form>
+      <button ion-button block outline>Registrar</button>
+  </ion-content>
+  
