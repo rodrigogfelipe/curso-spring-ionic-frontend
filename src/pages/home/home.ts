@@ -32,6 +32,21 @@ constructor(
   ionViewDidLeave() {
     this.menu.swipeEnable(true);
 }
+
+  /* ionViewDidEnter armazena a autorização do novo token*/ 
+ionViewDidEnter() {
+    this.auth.refreshToken()
+    .subscribe(response => {
+    this.auth.successfulLogin(response.headers.get('Authorization'));
+    this.navCtrl.setRoot('CategoriasPage');
+  
+  },
+
+
+    error => {});  
+
+
+}
   /*Declarando metado login para acessar a pagina CategoriasPages*/ 
   login() {
     this.auth.authenticate(this.creds)

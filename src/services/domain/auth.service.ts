@@ -24,6 +24,18 @@ authenticate(creds : CredenciaisDTO) {
         responseType: 'text'
     });
 }
+/*Metado refreshToken */ 
+refreshToken() {
+    return this.http.post(
+    `${API_CONFIG.baseUrl}/auth/refresh_token`, 
+    {},
+    {
+        observe: 'response',
+        responseType: 'text'
+
+        });
+
+}
 /*Metado successfulLogin */ 
 successfulLogin(authorizationValue : string) {
     let tok = authorizationValue.substring(7);
