@@ -29,11 +29,21 @@ export class ProfilePage {
           .subscribe(response => {
           this.cliente = response;
           this.getImageIfExists();
-},
-    error => {});
 
-  }
+},    /*error for 403 a pagina sera redirecionada HomePage*/ 
+      error => {
+          if (error.status == 403) {
+          this.navCtrl.setRoot('HomePage');
+    }
 
+});
+
+}
+
+else {
+      this.navCtrl.setRoot('HomePage');
+
+    }
 }
 
 /*Metado getImageIfExists() buscar pela URL do bucket ${API_CONFIG.bucketBaseUrl} */
