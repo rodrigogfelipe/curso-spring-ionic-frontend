@@ -58,4 +58,8 @@ ionViewDidEnter() {
 
   }
 
+  signup() {
+      this.navCtrl.push('SignupPage');
+    }
+
 }
