@@ -2,7 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Observable } from 'rxjs/Rx'; // IMPORTANTE: IMPORT ATUALIZADO
 import { StorageService } from "../services/storage.service";
-import { AlertController } from "ionic-angular";
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { FieldMessage } from '../models/fieldmessage';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -23,7 +24,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     }
 
-   
         console.log("Erro detectado pelo interceptor:");
         console.log(errorObj);
 
@@ -32,16 +32,19 @@ export class ErrorInterceptor implements HttpInterceptor {
             case 401:
             this.handle401();
             break;
+
             case 403:
             this.handle403();
             break;
-            default:
 
+            case 422:
+            this.handle422(errorObj);
+            break;
+
+            default:
             this.handleDefaultEror(errorObj);
 
         }
-
-
 
         return Observable.throw(errorObj);
 
@@ -49,21 +52,38 @@ export class ErrorInterceptor implements HttpInterceptor {
 
 }
 
-
-
 handle403() {
+
     this.storage.setLocalUser(null);
 
 }
-
-
 /*handle401 imprimir na tela*/ 
 handle401() {
-        let alert = this.alertCtrl.create( {
+    let alert = this.alertCtrl.create({
         title: 'Erro 401: falha de autenticação',
         message: 'Email ou senha incorretos',
         enableBackdropDismiss: false,
+        buttons: [
 
+            {
+
+                text: 'Ok'
+
+            }
+
+        ]
+
+    });
+
+    alert.present();
+
+}
+
+handle422(errorObj) {
+    let alert = this.alertCtrl.create({
+        title: 'Erro 422: Validação',
+        message: this.listErrors(errorObj.errors),
+        enableBackdropDismiss: false,
         buttons: [
 
             {
@@ -97,9 +117,20 @@ handleDefaultEror(errorObj) {
 
     alert.present();        
 
+    }
+
+
+
+private listErrors(messages : FieldMessage[]) : string {
+    let s : string = '';
+    for (var i=0; i<messages.length; i++) {
+    s = s + '<p><strong>' + messages[i].fieldName + "</strong>: " + messages[i].message + '</p>';
+}
+    return s;
+
+    }
 }
 
-}
 export const ErrorInterceptorProvider = {
 provide: HTTP_INTERCEPTORS,
 useClass: ErrorInterceptor,
