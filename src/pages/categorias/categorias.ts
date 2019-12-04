@@ -31,11 +31,12 @@ export class CategoriasPage {
             this.items = response;
       },
 
-      error => {
-        console.log(error);
-
-      });
+      error => {});
 
   }
+  showProdutos() {
+      this.navCtrl.push('ProdutosPage');    
+
+    }
 
 }
