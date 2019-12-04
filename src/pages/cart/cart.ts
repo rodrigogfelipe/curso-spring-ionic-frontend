@@ -4,6 +4,7 @@ import { CartItem } from '../../models/cart-item';
 import { CartService } from '../../services/domain/cat.service';
 import { ProdutoService } from '../../services/domain/produto.service';
 import { API_CONFIG } from '../../config/api.config';
+import { ProdutoDTO } from '../../models/produto.dto';
 
 @IonicPage()
 @Component({
@@ -37,4 +38,34 @@ loadImageUrls() {
       error => {});
     }
   }  
+
+  removeItem(produto: ProdutoDTO) {
+    this.items = this.cartService.removeProduto(produto).items;
+
+
+  }
+
+  increaseQuantity(produto: ProdutoDTO) {
+      this.items = this.cartService.increaseQuantity(produto).items;
+
+
+  }
+
+  decreaseQuantity(produto: ProdutoDTO) {
+    this.items = this.cartService.decreaseQuantity(produto).items;
+
+
+  }
+
+
+  total() : number {
+      return this.cartService.total();
+
+
+  }  
+  /*Metado para continuar comprando*/ 
+  goOn() {
+    this.navCtrl.setRoot('CategoriasPage');
+    }
 }
+
