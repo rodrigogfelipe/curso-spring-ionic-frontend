@@ -4,8 +4,6 @@ import { CategoriaService } from '../../services/domain/categoria.service';
 import { CategoriaDTO } from '../../models/categoria.dto';
 import { API_CONFIG } from '../../config/api.config';
 
-
-
 @IonicPage()
 @Component({
   selector: 'page-categorias',
@@ -34,9 +32,8 @@ export class CategoriasPage {
       error => {});
 
   }
-  showProdutos() {
-      this.navCtrl.push('ProdutosPage');    
-
+  showProdutos(categoria_id : string) {
+    this.navCtrl.push('ProdutosPage', {categoria_id: categoria_id});
     }
 
 }
