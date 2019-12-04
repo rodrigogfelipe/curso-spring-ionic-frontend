@@ -5,8 +5,6 @@ import { Observable } from "rxjs";
 import { ClienteDTO } from "../../models/cliente.dto";
 import { API_CONFIG } from "../../config/api.config";
 
-
-
 @Injectable()
 export class ClienteService {
     constructor(public http: HttpClient, public storage: StorageService) {

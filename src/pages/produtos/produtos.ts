@@ -21,7 +21,7 @@ export class ProdutosPage {
     public navParams: NavParams,
     public produtoService: ProdutoService) {
 
-    }
+  }
 
     ionViewDidLoad() {
         let categoria_id = this.navParams.get('categoria_id');
@@ -42,12 +42,14 @@ export class ProdutosPage {
         this.produtoService.getSmallImageFromBucket(item.id)
           .subscribe(response => {
         item.imageUrl = `${API_CONFIG.bucketBaseUrl}/prod${item.id}-small.jpg`;
-    },
+          },
         error => {});
         }
-  
-  
     }  
+
+    showDetail() {
+      this.navCtrl.push('ProdutoDetailPage');
+    }
   
 }
 
