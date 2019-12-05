@@ -27,7 +27,7 @@ export class ProfilePage {
     if (localUser && localUser.email) {
       this.clienteService.findByEmail(localUser.email)
           .subscribe(response => {
-          this.cliente = response;
+          this.cliente = response as ClienteDTO;
           this.getImageIfExists();
 
 },    /*realizar o redirecionamento para HomePage em caso de erro 403 */ 
