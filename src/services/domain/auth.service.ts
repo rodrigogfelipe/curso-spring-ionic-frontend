@@ -7,6 +7,7 @@ import { StorageService } from "../storage.service";
 import { JwtHelper } from 'angular2-jwt';
 import { CartService } from "./cat.service";
 
+/*implementar a autenticação */ 
 @Injectable()
 export class AuthService {
 
@@ -28,7 +29,7 @@ authenticate(creds : CredenciaisDTO) {
         responseType: 'text'
     });
 }
-/*Metado refreshToken */ 
+/* método refreshToken */ 
 refreshToken() {
     return this.http.post(
     `${API_CONFIG.baseUrl}/auth/refresh_token`, 
@@ -51,7 +52,7 @@ successfulLogin(authorizationValue : string) {
     this.cartService.createOrClearCart();
 
 }
-/*logout() remove do storage o usuário*/ 
+/*logout() remove do storage o usuário,limpar o carrinho em caso de login */ 
 logout() {
     this.storage.setLocalUser(null);
     }

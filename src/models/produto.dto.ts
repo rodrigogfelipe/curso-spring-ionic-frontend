@@ -2,6 +2,5 @@ export interface ProdutoDTO {
     id : string;
     nome : string;  
     preco : number;
-    /* imageUrl? tem  a função de guarda a imagem do produto*/ 
-    imageUrl? : string;
+    imageUrl? : string; /* imageUrl? tem  a função de guarda a imagem do produto*/ 
 }

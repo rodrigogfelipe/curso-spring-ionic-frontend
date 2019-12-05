@@ -24,7 +24,7 @@ import { CartService } from '../services/domain/cat.service';
     ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    HttpClientModule,/*Importar HttpClientModule no módulo principal*/ 
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -36,7 +36,7 @@ import { CartService } from '../services/domain/cat.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CategoriaService,
+    CategoriaService,/*registrar CategoriaService nos providers  */
     AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,

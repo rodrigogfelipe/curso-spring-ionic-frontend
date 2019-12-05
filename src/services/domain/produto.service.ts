@@ -12,7 +12,7 @@ export class ProdutoService {
 findById(produto_id : string) {
     return this.http.get<ProdutoDTO>(`${API_CONFIG.baseUrl}/produtos/${produto_id}`);
 }
-
+/**findByCategoria para obter os produtos de uma dada categoria  */
 findByCategoria(categoria_id : string) {
     return this.http.get(`${API_CONFIG.baseUrl}/produtos/?categorias=${categoria_id}`);
     }

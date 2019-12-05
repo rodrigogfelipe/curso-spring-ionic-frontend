@@ -32,6 +32,7 @@ export class CategoriasPage {
       error => {});
 
   }
+  /** acrescentar um método showProdutos() para abrir a página de produtos.showProdutos, incluir o código da categoria como parâmetro da chamada de push   */
   showProdutos(categoria_id : string) {
     this.navCtrl.push('ProdutosPage', {categoria_id: categoria_id});
     }

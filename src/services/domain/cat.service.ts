@@ -36,7 +36,7 @@ export class CartService {
         this.storage.setCart(cart);
         return cart;
     }
-
+    /**Remover os produtos */
     removeProduto(produto: ProdutoDTO) : Cart {
         let cart = this.getCart();
         let position = cart.items.findIndex(x => x.produto.id == produto.id);
@@ -47,7 +47,7 @@ export class CartService {
         this.storage.setCart(cart);
         return cart;
     }
-
+    /**imcrementar produtos em quantidades */
     increaseQuantity(produto: ProdutoDTO) : Cart {
         let cart = this.getCart();
         let position = cart.items.findIndex(x => x.produto.id == produto.id);
@@ -61,7 +61,7 @@ export class CartService {
 
 
     }
-
+     /**decrementar produtos em quantidades */
     decreaseQuantity(produto: ProdutoDTO) : Cart {
         let cart = this.getCart();
         let position = cart.items.findIndex(x => x.produto.id == produto.id);
@@ -75,7 +75,7 @@ export class CartService {
         this.storage.setCart(cart);
         return cart;
 }
-
+    /**Calcular o total dos produtos que estão no carrinho */
     total() : number {
         let cart = this.getCart();
         let sum = 0;

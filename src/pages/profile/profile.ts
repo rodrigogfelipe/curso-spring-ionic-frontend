@@ -21,7 +21,7 @@ export class ProfilePage {
       public storage: StorageService,
       public clienteService: ClienteService) {
 }
-  /*Mostra email na pagina de profile*/
+  /* criar um atributo email e carregá-lo do storage */
   ionViewDidLoad() {
     let localUser = this.storage.getLocalUser();
     if (localUser && localUser.email) {
@@ -30,7 +30,7 @@ export class ProfilePage {
           this.cliente = response;
           this.getImageIfExists();
 
-},    /*error for 403 a pagina sera redirecionada HomePage*/ 
+},    /*realizar o redirecionamento para HomePage em caso de erro 403 */ 
       error => {
           if (error.status == 403) {
           this.navCtrl.setRoot('HomePage');
@@ -46,7 +46,7 @@ else {
     }
 }
 
-/*Metado getImageIfExists() buscar pela URL do bucket ${API_CONFIG.bucketBaseUrl} */
+/*Incluir lógica para obter a URL da imagem no bucket S3, se ela existir */
 getImageIfExists() {
     this.clienteService.getImageFromBucket(this.cliente.id)
       .subscribe(response => {

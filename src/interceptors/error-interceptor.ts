@@ -5,6 +5,7 @@ import { StorageService } from "../services/storage.service";
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { FieldMessage } from '../models/fieldmessage';
 
+/*Criar um interceptor que retorne apenas o objeto de erro devolvido pelo backend  */
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
@@ -51,9 +52,8 @@ export class ErrorInterceptor implements HttpInterceptor {
     }) as any;
 
 }
-
+/** ErrorInterceptor, acrescentar um tratamento específico para 403  */
 handle403() {
-
     this.storage.setLocalUser(null);
 
 }
@@ -78,7 +78,7 @@ handle401() {
     alert.present();
 
 }
-
+/** ErrorInterceptor, tratar especificamente o erro 422  */
 handle422(errorObj) {
     let alert = this.alertCtrl.create({
         title: 'Erro 422: Validação',
@@ -118,8 +118,6 @@ handleDefaultEror(errorObj) {
     alert.present();        
 
     }
-
-
 
 private listErrors(messages : FieldMessage[]) : string {
     let s : string = '';

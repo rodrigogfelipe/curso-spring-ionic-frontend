@@ -15,7 +15,7 @@ import { ClienteService } from '../../services/domain/cliente.service';
 })
 export class SignupPage {
 
-  formGroup: FormGroup;
+  formGroup: FormGroup; /**Criando um FormGroup para controlar o formulário  */
   estados: EstadoDTO[];
   cidades: CidadeDTO[];
 
@@ -46,7 +46,7 @@ constructor(
         cidadeId : [null, [Validators.required]]      
     });
 }
-/**/
+/* implementar ionViewDidLoad  para carregamento inicial dos estados e cidades */
 ionViewDidLoad() {
     this.estadoService.findAll()
       .subscribe(response => {
@@ -72,7 +72,7 @@ updateCidades() {
     error => {});
 
 }
-
+/**implementar a lógica para inserir  */
 signupUser() {
   this.clienteService.insert(this.formGroup.value)
     .subscribe(response => {  

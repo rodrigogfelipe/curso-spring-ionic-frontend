@@ -8,6 +8,7 @@ import { AuthService } from '../../services/domain/auth.service';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+/*home.ts e responsavel por envio de dados */
 export class HomePage {
   
   /*Declarando a Classe CredenciaisDTO com os atributos vazios */ 
@@ -17,7 +18,6 @@ export class HomePage {
 }
 
 constructor(
-
   public navCtrl: NavController, 
   public menu: MenuController,
   /*Declarando a Classe AuthService*/ 
@@ -33,7 +33,7 @@ constructor(
     this.menu.swipeEnable(true);
 }
 
-  /* ionViewDidEnter armazena a autorização do novo token*/ 
+  /*implementar o evento ionViewDidEnter para chamar o refresh token */ 
 ionViewDidEnter() {
     this.auth.refreshToken()
     .subscribe(response => {
@@ -41,13 +41,9 @@ ionViewDidEnter() {
     this.navCtrl.setRoot('CategoriasPage');
   
   },
-
-
     error => {});  
-
-
 }
-  /*Declarando metado login para acessar a pagina CategoriasPages*/ 
+  /* Chamar authenticate no método login*/ 
   login() {
     this.auth.authenticate(this.creds)
       .subscribe(response => {

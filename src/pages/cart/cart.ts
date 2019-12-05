@@ -26,7 +26,7 @@ export class CartPage {
     this.items = cart.items;
     this.loadImageUrls();
 }
-
+/**Configuração do bucket para captura as imagens na amazon */
 loadImageUrls() {
     for (var i=0; i<this.items.length; i++) {
     let item = this.items[i];
@@ -38,32 +38,32 @@ loadImageUrls() {
       error => {});
     }
   }  
-
+  /**Remove os prosutos do carrinho */
   removeItem(produto: ProdutoDTO) {
     this.items = this.cartService.removeProduto(produto).items;
 
 
   }
-
+/**incrementando a quantidade de produtos no carrinho */
   increaseQuantity(produto: ProdutoDTO) {
       this.items = this.cartService.increaseQuantity(produto).items;
 
 
   }
-
+  /**Decrementado a quantidade de produtos no carrinho */
   decreaseQuantity(produto: ProdutoDTO) {
     this.items = this.cartService.decreaseQuantity(produto).items;
 
 
   }
 
-
+/**Somando os valores dos produtos */
   total() : number {
       return this.cartService.total();
 
 
   }  
-  /*Metado para continuar comprando*/ 
+  /* implementar a função para continuar comprando */ 
   goOn() {
     this.navCtrl.setRoot('CategoriasPage');
     }
