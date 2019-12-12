@@ -1,42 +1,42 @@
 <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title *ngIf="codpedido">Pedido registrado!</ion-title>
-      <ion-title *ngIf="!codpedido">Confira seu pedido</ion-title>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="codpedido">Pedido registrado!</ion-title>
+    <ion-title *ngIf="!codpedido">Confira seu pedido</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <div *ngIf="!codpedido">
-  <ion-card>
+  <div *ngIf="!codpedido">
+    <ion-card>
       <ion-card-header>
-            Itens do pedido
+        Itens do pedido
       </ion-card-header>
 
-  <ion-list>
+      <ion-list>
 
         <ion-item *ngFor="let item of cartItems">
-        <ion-thumbnail item-start>
-        <img [src]="item.produto.imageUrl || 'assets/imgs/prod.jpg'">
+          <ion-thumbnail item-start>
+            <img [src]="item.produto.imageUrl || 'assets/imgs/prod.jpg'">
 
           </ion-thumbnail>
-              <h2>{{item.produto.nome}}</h2>
-              <p>{{item.produto.preco | currency}}</p>
-              <p class="nolinebreak">{{item.quantidade}}</p>
-              <p item-end>{{item.produto.preco * item.quantidade | currency}}</p>
+          <h2>{{item.produto.nome}}</h2>
+          <p>{{item.produto.preco | currency}}</p>
+          <p class="nolinebreak">{{item.quantidade}}</p>
+          <p item-end>{{item.produto.preco * item.quantidade | currency}}</p>
 
-        </ion-item> 
+        </ion-item>
 
-      <ion-item>
+        <ion-item>
 
           <h2>Total</h2>
           <h2 item-end>{{total() | currency}}</h2>
 
         </ion-item>
 
-      </ion-list> 
+      </ion-list>
 
     </ion-card>
 
@@ -44,16 +44,16 @@
 
     <ion-card>
 
-        <ion-card-header>
-            Cliente
-        </ion-card-header>
+      <ion-card-header>
+        Cliente
+      </ion-card-header>
 
-        <ion-item>
+      <ion-item>
 
-          <h2>{{cliente?.nome}}</h2>
-          <p>{{cliente?.email}}</p>
+        <h2>{{cliente?.nome}}</h2>
+        <p>{{cliente?.email}}</p>
 
-        </ion-item>
+      </ion-item>
 
     </ion-card>
 
@@ -67,7 +67,7 @@
 
       </ion-card-header>
 
-  <ion-item>
+      <ion-item>
 
         <h2>{{endereco?.logradouro}}, {{endereco?.numero}}</h2>
         <p>{{endereco?.complemento}} {{endereco?.bairro}} CEP {{endereco?.cep}}</p>
@@ -87,7 +87,7 @@
 
       </ion-card-header>
 
-    
+
 
       <ion-item *ngIf="pedido.pagamento['@type']=='pagamentoComCartao'">
 
@@ -106,8 +106,8 @@
 
 
 
-      <button ion-button block (click)="checkout()">Confirmar pedido</button>
-     <button ion-button block outline (click)="back()">Voltar</button>
+    <button ion-button block (click)="checkout()">Confirmar pedido</button>
+    <button ion-button block outline (click)="back()">Voltar</button>
 
   </div>
 
@@ -117,22 +117,22 @@
 
     <ion-card>
 
-        <ion-card-header>
+      <ion-card-header>
 
-          Seu pedido foi registrado!
+        Seu pedido foi registrado!
 
-        </ion-card-header>
+      </ion-card-header>
 
-        <ion-item>
+      <ion-item>
 
-          <h2>Código do pedido: {{codpedido}}</h2>
-          <p>Verifique seu email</p>
+        <h2>Código do pedido: {{codpedido}}</h2>
+        <p>Verifique seu email</p>
 
-        </ion-item>
+      </ion-item>
 
     </ion-card>
 
-  <button ion-button block outline (click)="home()">Voltar</button>
+    <button ion-button block outline (click)="home()">Voltar</button>
 
   </div>
 

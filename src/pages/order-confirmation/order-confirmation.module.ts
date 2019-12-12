@@ -10,7 +10,7 @@ import { PedidoService } from '../../services/domain/pedido.service';
   imports: [
     IonicPageModule.forChild(OrderConfirmationPage),
   ],
-  providers: [
+  providers: [ /*registrar PedidoService nos providers */ 
       PedidoService
   ]
 })

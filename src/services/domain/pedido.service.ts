@@ -8,7 +8,7 @@ export class PedidoService {
 
     constructor(public http: HttpClient) {
 }
-
+/**Criar PedidoService com método insert  */
         insert(obj: PedidoDTO) {
                 return this.http.post(
                 `${API_CONFIG.baseUrl}/pedidos`,

@@ -12,6 +12,7 @@ import { CartService } from '../../services/domain/cat.service';
   selector: 'page-pick-address',
   templateUrl: 'pick-address.html',
 })
+/**Em PickAddressPage, atualizar o carregamento dos endereços do cliente logado  */
 export class PickAddressPage {
 
   items: EnderecoDTO[];
@@ -57,9 +58,10 @@ export class PickAddressPage {
     }
 
   }
+  /**Em PaymentPage, no método nextPage, mostrar o pedido no console  */
   nextPage(item: EnderecoDTO) {
     this.pedido.enderecoDeEntrega = {id: item.id};
-    this.navCtrl.push('PaymentPage', {pedido: this.pedido});
+    this.navCtrl.push('PaymentPage', {pedido: this.pedido}); /**Em PickAddressPage, fazer a navegação para PaymentPage  */
   }
 
 }

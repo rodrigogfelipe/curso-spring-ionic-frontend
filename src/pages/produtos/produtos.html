@@ -25,6 +25,7 @@
     </button>
   </ion-list>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <!-- No HTML, incluir o elemento ion-infinite-scroll como último filho de ion-content -->
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
       </ion-infinite-scroll>  
 </ion-content>
